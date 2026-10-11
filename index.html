@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'" />
+    <meta name="description" content="Case Desk checks a USCIS filing packet against 127 published rules before it is mailed, and names every defect with its fix and its source. A showcase with invented packets." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Case Desk: a USCIS packet checker for immigration attorneys" />
+    <meta property="og:description" content="Case Desk checks a USCIS filing packet against 127 published rules before it is mailed, and names every defect with its fix and its source. A showcase with invented packets." />
+    <meta property="og:url" content="https://workflo17.github.io/case-desk-demo/" />
+    <meta property="og:image" content="https://workflo17.github.io/case-desk-demo/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#d8dee4" />
+    <title>Case Desk</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the packet</a>
+    <header class="bar">
+      <a class="brand" href="#/" aria-label="Case Desk, back to the desk">
+        <span class="brand-tab" aria-hidden="true"></span>
+        <span class="brand-name" translate="no">Case Desk</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#/" data-view="desk">Desk</a>
+        <a href="#/rules" data-view="rules">Rules</a>
+        <a href="#/proof" data-view="proof">Proof</a>
+      </nav>
+      <div class="bar-right">
+        <button class="btn btn-tour" type="button" data-start-tour>Take the tour</button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <p class="loading">Opening the desk…</p>
+    </main>
+    <footer class="foot">
+      <p>
+        For licensed attorneys and accredited representatives. Case Desk checks packets against published USCIS rules;
+        it does not give legal advice, and the attorney reviews and approves every packet.
+      </p>
+      <p data-runs-where>Runs on this computer only. Nothing typed here is saved or sent anywhere.</p>
+    </footer>
+    <aside id="tour" class="tour" hidden aria-labelledby="tour-h"></aside>
+    <div id="live" class="sr-only" aria-live="polite"></div>
+  </body>
+</html>
