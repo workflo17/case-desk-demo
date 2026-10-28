@@ -11,7 +11,7 @@
   --edge: #aab5c1;
   --ink: #18213a;
   --ink-2: #4b5671;
-  --ink-3: #6b7590;
+  --ink-3: #56617d; /* 4.55:1 on the slate ground, 4.92:1 on manila (was #6b7590, 3.39:1) */
   --manila: #e5cb86;
   --manila-deep: #a8853c;
   --manila-pale: #f2e5bf;
@@ -138,9 +138,7 @@ code {
   font-family: var(--display);
   font-variation-settings: "wght" 600;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   color: var(--ink-3);
 }
 
@@ -151,7 +149,7 @@ code {
 .page-h {
   font-family: var(--text);
   font-weight: 600;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
   line-height: 1.12;
   margin: 0 0 16px;
   max-width: 24ch;
@@ -416,13 +414,13 @@ main:focus-visible {
 }
 
 .desk-thesis {
+  /* The screen's one finding, read right under the title. */
   font-weight: 600;
-  font-size: clamp(1.9rem, 3.8vw, 3.1rem);
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-  margin: 0 0 18px;
-  max-width: 21ch;
-  text-wrap: balance;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 10px;
+  max-width: 48ch;
+  text-wrap: pretty;
 }
 
 .desk-lede {
@@ -684,11 +682,13 @@ input.money:invalid {
 
 .case-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  /* The actions get a row of their own, so five buttons never squeeze the client's name. */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "back    back"
-    "id      actions"
-    "summary actions";
+    "back"
+    "id"
+    "summary"
+    "actions";
   gap: 6px 24px;
   margin-bottom: 30px;
 }
@@ -722,7 +722,7 @@ input.money:invalid {
 
 .case-client {
   margin: 0;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
   line-height: 1.1;
 }
 
@@ -753,8 +753,9 @@ input.money:invalid {
 .case-actions {
   grid-area: actions;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  align-self: end;
+  margin-top: 8px;
 }
 
 .case-grid {
@@ -790,7 +791,7 @@ input.money:invalid {
 
 .sub-h {
   margin: 18px 0 8px;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
 }
 
 .part-filing {
@@ -838,7 +839,7 @@ input.money:invalid {
   background: var(--ink);
   color: var(--paper);
   font-family: var(--display);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
 }
 
@@ -1047,10 +1048,15 @@ input.money:invalid {
 }
 
 .check-mark {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  height: 1.5em;
+}
+
+.check-mark svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
 }
 
 .is-met .check-mark {
@@ -1304,7 +1310,7 @@ input.money:invalid {
 }
 
 .finding-cat {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   margin-bottom: 3px !important;
 }
 
@@ -1326,7 +1332,7 @@ input.money:invalid {
   background: var(--ink);
   color: var(--paper);
   font-family: var(--display);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 2px;
@@ -1616,6 +1622,13 @@ input.money:invalid {
   font-size: 0.74rem;
   color: var(--ink-3);
   overflow-wrap: anywhere;
+}
+
+/* Ids inside a source line are already mono at caption size; the global code shrink would take them under 11px. */
+.finding-src code,
+.rule-src code,
+.fixture-expect code {
+  font-size: 1em;
 }
 
 .rule-src a {
